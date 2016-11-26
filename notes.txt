@@ -9,3 +9,11 @@ TODO:
 
 1. profiling of the code
 2. extensibility with atleast 2 possible seacrh algorithms 
+
+
+1. Why the class structure is necessary?
+2. Explain data parallelism?
+3. Give an example where 
+4 use word ontology?
+5. use of protocol buffers?
+6. move preprocessing step 
