@@ -8,21 +8,21 @@ import csv
 from multiprocessing import Pool
 import itertools
 
-''' Single-thread Processing '''
 
 def run_singlep(specs):
-    '''
-    runs on a single thread
-    '''
+    
+    ''' Single-thread Processing '''
+    
     return search(sen = specs['sen'],
             con_list = specs['conlist'])
 
 
-''' Multi-processing '''
 
 def run_multip(specs):
 
     '''
+    Multi-processing:
+
     A demonstration of seacrhing concepts asynchronously with
     data-parallelism 
     '''

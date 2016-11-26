@@ -2,6 +2,12 @@ def search(sen=None,
         con_list=None):
     '''
     wrapper for seacrhing a list of concepts in a sentence
+    Args:
+        sen: a Sentence object
+        con_list : a list of Concept objects
+    Returns:
+        list of concepts found in the Setence object.
+        Returns an empty list, if no concepts are found
     '''
     if con_list is not None:
         con_in_sen = filter(lambda concept: search_(sen,concept),con_list)
@@ -9,9 +15,15 @@ def search(sen=None,
     else:
         return []
 
+
+
 def search_(sen=None,
         concept=None):
+    '''
+    wrapper for search a concept-string in a sen-string
 
+    This is the place to incorporate new search algorithms
+    '''
     sen = sen.get_str()
     concept_pr = concept.get_str()
     T = concept.BMHsearch_Table
@@ -19,7 +31,7 @@ def search_(sen=None,
     return BMHSearch(text=sen,
             pattern=concept_pr,
             T=T)
-
+    
 def BruteForce(text=None,
         pattern=None):
     '''
