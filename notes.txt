@@ -3,4 +3,9 @@ Assumptions
 1. Assuming that the list of strings is present in a file
 2. Check if the file doeesn't exist - raiese appropriate error
 3. assuming that the string has atmost --- words
-4. 
+4. the list of concepts is present in a file, seperated by commas, no repitions in the list?
+
+TODO:
+
+1. profiling of the code
+2. extensibility with atleast 2 possible seacrh algorithms 
