@@ -1,44 +1,56 @@
-import string
-
-def process_sen(sen=None):
+def search(sen=None,
+        con_list=None):
     '''
-    Function to preprocess a sentence 
-
-    Args:
-        sen : a sentence string
-
-    Return:
-        processed sentence
-        (as string is an immutable objec (call-by-value), a new sring is returned)
+    wrapper for seacrhing a list of concepts in a sentence
     '''
-    
-    
-    #remove punctuations
-    sen = sen.translate(None, string.punctuation)
+    if con_list is not None:
+        con_in_sen = filter(lambda concept: search_(sen,concept),con_list)
+        return con_in_sen
+    else:
+        return []
 
-    '''
-    Time comparison across different approaches 
-    http://stackoverflow.com/a/266162
-    '''
-
-    #remove > 2 whitespace
-    sen = " ".join(sen.split())
-    
-    return sen
-
-def naivePythonComparison(sen=None,
+def search_(sen=None,
         concept=None):
 
+    sen = sen.get_str()
+    concept_pr = concept.get_str()
+    T = concept.BMHsearch_Table
+
+    return BMHSearch(text=sen,
+            pattern=concept_pr,
+            T=T)
+
+def BruteForce(text=None,
+        pattern=None):
     '''
     Brute-force implemenation using python string comparison 
     '''
-    sen = sen.lower()
-    concept_pr = concept.lower()
-
-    if concept_pr in sen:
+    if pattern in text:
         return True
     else:
         return False
 
 
+def BMHSearch(text=None,
+        pattern=None,
+        T=None):
+    '''
+    The code has been developed based on the pseudocode on Wikipedia page for
+    Boyer Moore Horspool algorithm
+    '''
+    skip = 0
+    len_text = len(text)
+    len_pattern = len(pattern)
+    while len_text - skip >= len_pattern:
+        i = len_pattern - 1
+        while text[skip+i] == pattern[i]:
+            if i == 0:
+                return True
+            i = i - 1
+        skip += T[ord(text[skip + len_pattern - 1])]    
+    return False
+   
 
+def BMSearch(sen=None,
+        con=None):
+    return NotImplementedError()

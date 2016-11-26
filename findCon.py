@@ -5,26 +5,40 @@ from classes.concept import Concept
 from utils_asgn import *
 import argparse
 import csv
+from multiprocessing import Pool
+import itertools
 
-def run(specs):
+''' Single-thread Processing '''
 
-    #preprocess the sentemce
-    sen = process_sen(specs['sen'])
-
-    #find concepts
-    con_in_sen = filter(lambda concept: specs['search_algo'](sen,concept),specs['conlist'])
-
-
-    print(con_in_sen)
-    #reduce
+def run_singlep(specs):
     '''
-    def reduce_c(x,y):
-        if x[[0] is True:
-            return True
-    reduce(lambda x,y: (True,x[1]+y[1]))
+    runs on a single thread
     '''
-    pass
+    return search(sen = specs['sen'],
+            con_list = specs['conlist'])
 
+
+''' Multi-processing '''
+
+def run_multip(specs):
+
+    '''
+    A demonstration of seacrhing concepts asynchronously with
+    data-parallelism 
+    '''
+
+    pool = Pool()
+
+    def chunks(l, n):
+        for i in range(0, len(l), n):
+            yield {'sen':specs['sen'],'conlist':l[i:i + n]}
+
+    y = [] 
+    for x_ in pool.imap(run_singlep,chunks(specs['conlist'],5)):
+        y.append(x_)
+
+    y = list(itertools.chain(*y))   
+    return y
 
     
 if __name__ == "__main__":
@@ -33,13 +47,13 @@ if __name__ == "__main__":
 
     #epochs, batch_size and model ID
     parser.add_argument('--sen', type=str, default='Which restaurants do West Indian ?food', help='sentence string')
-    parser.add_argument('--conlist', type=str, default='./concepts.list', help='location of file containing the list of concepts')
+    parser.add_argument('--fpath', type=str, default='./concepts.list', help='location of file containing the list of concepts')
     args = parser.parse_args()
    
     
     #arguments from the parser
     sen = Sentence(args.sen)
-    conlist_fpath = args.conlist
+    conlist_fpath = args.fpath
 
     #read the list of concepts from the specified file
     conlist = []
@@ -48,13 +62,23 @@ if __name__ == "__main__":
         for row in reader:
             conlist.append(Concept(row[0]))
 
+    '''
+    the preprocessing innvolves on-the-fly generation of table 
+    for each concept in the csv. This can be either be done apriori
+    for the whole databse or can be done on-the-fly got batches of data
+    for data_parallilsm case
+    '''
+
+    #specifictions for search-runs
     specs = {
             'sen': sen,
             'conlist':conlist, 
-            'search_algo':naivePythonComparison 
             }
 
     #run
-    coneps = run(specs)
-    
+    y = run_multip(specs)
+   
+
+    for y_ in y:
+        print(y_)
     
