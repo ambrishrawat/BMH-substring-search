@@ -1,0 +1,6 @@
+Assumptions
+
+1. Assuming that the list of strings is present in a file
+2. Check if the file doeesn't exist - raiese appropriate error
+3. assuming that the string has atmost --- words
+4. 
