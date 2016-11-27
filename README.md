@@ -49,5 +49,4 @@ The problem statement, as mentioned in the pdf, has a multitide of other dimensi
 - The upper limit of 20 words in a sentence hasn't been exploited in this implementtion. This upper cap can be used to restrain the number of possible searched. For instance, a list of words, 2-len phrases, ..., n-len phrases can be genrated for a sentence. The number of such phrases is buonded from above as a sentence has at most 20 words. The phrases thus obtained can be directly queried for in the database of concepts (eg. via hashing).
 - Grammar structure can also be explited for a sentence. 
 
-
-**NOTE: ** A total of 4 hours were spent on this coding assignment
+**NOTE**: A total of 4 hours were spent on this coding assignment
