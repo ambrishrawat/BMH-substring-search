@@ -28,7 +28,8 @@ This file contains some basic unti tests for the search algorithms.
 ## Assumptions
 - It is assumed that the list of concepts are stored in a txt file with each line defining a new concept. 
 - It is also asumed that there are no repitions in the list of concepts. (each instance will be seperately detected)
-- It is assumed that file can fit into CPU memory. 
+- It is assumed that `concepts.list` file can fit into CPU memory. 
+- The developed code is not case-sensitive
 
 ## Highlights
 - The developed code can be easily extended to add new search algorithms
