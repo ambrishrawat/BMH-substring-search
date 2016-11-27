@@ -9,6 +9,11 @@ The script `findCon.py` can be used to find which concepts are present in a give
 ```
 python findCon.py --sen="Who does West Indian cuisine?" --fpath=./concepts.list
 ```
+sample output:
+```
+Indian
+West Indian
+```
 ### `utils_asgn.py` 
 This file contains implementation of Boyer-Moore-Horspool string search algorithm. The developed code is based on the pseudo-code available [here](https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore%E2%80%93Horspool_algorithm#Description). A brute-force implementation of search using python string comparison operators is also available here. 
 
