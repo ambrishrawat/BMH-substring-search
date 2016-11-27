@@ -16,7 +16,7 @@ This file contains implementation of Boyer-Moore-Horspool string search algorith
 - `Sentence.py`: This class extends the python str class. Preprocessing steps like punctuation removal have been implemented in this class. It can be extended to include other meta deta for a sentence like *source language* etc. which can be later used for refined search. Sentence string is processed to lower case for comparison. Pre-defined python-functions have been used for punctuation removal and lower-case conversion.
 - `Concept.py`: This class also extends the python str class. Additionaly, it also generated the look-up table used in Boyer-Moore-Horspool search algorithm. Conceptistring are also preprocessed to lower case for comparison.
 
-### `tests`
+### `tests.py`
 This file contains some basic unti tests for the search algorithms.
 
 
@@ -42,3 +42,4 @@ The problem statement, as mentioned in the pdf, has a multitide of other dimensi
 - Large-scale databases can also be used at backend when the number of concepts run in millions. 
 - The more general Boyer-Moore algirithm can be used for string matching. It will require additional preprocessing. This however can be a part of one-time preprcessing while building an ontology of concepts. This algorithm is known to be advantageous when the same needle is searched for multiple times in different haystacks.
 
+**NOTE: ** A total of 4 hours were spent on this coding assignment
