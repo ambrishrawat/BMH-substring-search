@@ -7,7 +7,7 @@ Requirements
 ## Outline
 The script `findCon.py` can be used to find which concepts are present in a given sentence.
 ```
-python findCon.py --sen="Who does West Indian cuisine?" --fpath=./concepts.list
+python findCon.py --sen="Who does west indian cuisine?" --fpath=./concepts.list
 ```
 sample output:
 ```
