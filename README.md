@@ -1,4 +1,4 @@
-# Apple Coding Test
+# Sub-string Search (BMH algorithm)
 This is an implmentation of the programming assignment defined in ProgrammingAssignment.pdf
 
 Requirements
